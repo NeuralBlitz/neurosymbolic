@@ -13,12 +13,16 @@ import Playground from "@/pages/playground";
 import EthicsCharter from "@/pages/charter";
 import CausalReasoning from "@/pages/causal";
 import SynergyEngine from "@/pages/synergy";
+import RiskHeatmap from "@/pages/heatmap";
+import PolicySimulator from "@/pages/simulator";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/heatmap" component={RiskHeatmap} />
       <Route path="/playground" component={Playground} />
+      <Route path="/simulator" component={PolicySimulator} />
       <Route path="/causal" component={CausalReasoning} />
       <Route path="/repo" component={RepoStructure} />
       <Route path="/synergy" component={SynergyEngine} />

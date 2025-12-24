@@ -1,15 +1,16 @@
 import { Link, useLocation } from "wouter";
-import { Shield, GitBranch, Activity, Database, Settings, BrainCircuit, Eye, Menu, X, PlaySquare, Network } from "lucide-react";
+import { Shield, GitBranch, Activity, Database, Settings, BrainCircuit, Eye, Menu, X, PlaySquare, Network, LayoutDashboard, Sliders, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 const navItems = [
-  { icon: Shield, label: "Charter Monitor", href: "/" },
+  { icon: LayoutDashboard, label: "Control Center", href: "/" },
+  { icon: AlertTriangle, label: "Risk Heatmap", href: "/heatmap" },
   { icon: PlaySquare, label: "Model Playground", href: "/playground" },
+  { icon: Sliders, label: "Policy Simulator", href: "/simulator" },
   { icon: Network, label: "Causal Logic", href: "/causal" },
-  { icon: GitBranch, label: "Repo Structure", href: "/repo" },
-  { icon: BrainCircuit, label: "Synergy Engine", href: "/synergy" },
   { icon: Shield, label: "Ethical Charter", href: "/charter" },
+  { icon: GitBranch, label: "Repo Structure", href: "/repo" },
   { icon: Eye, label: "Epistemic Log", href: "/epistemic" },
   { icon: Database, label: "Data Provenance", href: "/data" },
   { icon: Settings, label: "Governance Config", href: "/settings" },
@@ -37,14 +38,14 @@ export function Navigation() {
           </p>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto scrollbar-hide">
+        <nav className="flex-1 p-3 space-y-1 overflow-y-auto scrollbar-hide">
           {navItems.map((item) => {
             const isActive = location === item.href;
             return (
               <Link key={item.label} href={item.href}>
                 <a
                   className={cn(
-                    "flex items-center gap-3 px-4 py-2.5 rounded-md transition-all duration-200 group border border-transparent",
+                    "flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 group border border-transparent",
                     isActive
                       ? "bg-primary/10 text-primary border-primary/30 shadow-[0_0_10px_rgba(0,255,255,0.05)]"
                       : "text-muted-foreground hover:text-white hover:bg-white/5"
@@ -56,7 +57,7 @@ export function Navigation() {
                       isActive ? "text-primary" : "text-muted-foreground group-hover:text-white"
                     )}
                   />
-                  <span className="font-medium font-display tracking-wide text-xs">
+                  <span className="font-medium font-display tracking-wide text-[11px] uppercase italic">
                     {item.label}
                   </span>
                 </a>
@@ -68,11 +69,11 @@ export function Navigation() {
         <div className="p-4 border-t border-white/10">
           <div className="p-3 rounded bg-black/40 border border-white/5 font-mono text-[10px] text-muted-foreground">
             <div className="flex justify-between mb-1">
-              <span>CPU</span>
-              <span className="text-primary">42%</span>
+              <span>SYNC</span>
+              <span className="text-primary">99.9%</span>
             </div>
             <div className="w-full bg-white/10 h-1 rounded overflow-hidden">
-              <div className="bg-primary h-full w-[42%]" />
+              <div className="bg-primary h-full w-[99%]" />
             </div>
           </div>
         </div>
@@ -83,38 +84,24 @@ export function Navigation() {
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-2">
             <BrainCircuit className="w-5 h-5 text-primary" />
-            <h1 className="font-display font-bold text-sm tracking-wider text-white">AEGIS.AI</h1>
+            <h1 className="font-display font-bold text-sm tracking-wider text-white uppercase">AEGIS.AI</h1>
           </div>
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2">
             {mobileMenuOpen ? <X className="w-5 h-5 text-primary" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
         {mobileMenuOpen && (
-          <nav className="border-t border-white/10 bg-black/90 max-h-[80vh] overflow-y-auto p-4 space-y-2">
+          <nav className="border-t border-white/10 bg-black/95 max-h-[80vh] overflow-y-auto p-4 space-y-2">
             {navItems.map((item) => (
               <Link key={item.label} href={item.href}>
                 <a onClick={() => setMobileMenuOpen(false)} className={cn("flex items-center gap-3 p-3 rounded", location === item.href ? "bg-primary/10 text-primary" : "text-muted-foreground")}>
                   <item.icon className="w-4 h-4" />
-                  <span className="text-sm font-display">{item.label}</span>
+                  <span className="text-sm font-display uppercase italic">{item.label}</span>
                 </a>
               </Link>
             ))}
           </nav>
         )}
-      </div>
-
-      {/* Bottom Nav Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-card/80 backdrop-blur-xl border-t border-white/10">
-        <nav className="flex justify-around items-center p-2">
-          {navItems.slice(0, 5).map((item) => (
-            <Link key={item.label} href={item.href}>
-              <a className={cn("flex flex-col items-center gap-1 p-2", location === item.href ? "text-primary" : "text-muted-foreground")}>
-                <item.icon className="w-4 h-4" />
-                <span className="text-[9px] font-mono">{item.label.split(" ")[0]}</span>
-              </a>
-            </Link>
-          ))}
-        </nav>
       </div>
     </>
   );
