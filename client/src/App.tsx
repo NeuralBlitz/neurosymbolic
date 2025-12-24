@@ -9,13 +9,17 @@ import RepoStructure from "@/pages/repo";
 import EpistemicLog from "@/pages/epistemic";
 import DataProvenance from "@/pages/data";
 import GovernanceConfig from "@/pages/settings";
+import Playground from "@/pages/playground";
+import EthicsCharter from "@/pages/charter";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/playground" component={Playground} />
       <Route path="/repo" component={RepoStructure} />
       <Route path="/synergy" component={Dashboard} />
+      <Route path="/charter" component={EthicsCharter} />
       <Route path="/epistemic" component={EpistemicLog} />
       <Route path="/data" component={DataProvenance} />
       <Route path="/settings" component={GovernanceConfig} />
