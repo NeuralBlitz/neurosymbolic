@@ -15,15 +15,21 @@ import CausalReasoning from "@/pages/causal";
 import SynergyEngine from "@/pages/synergy";
 import RiskHeatmap from "@/pages/heatmap";
 import PolicySimulator from "@/pages/simulator";
+import DiscoveryEngine from "@/pages/discovery";
+import LineageVisualizer from "@/pages/lineage";
+import AuditVault from "@/pages/audit";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/discovery" component={DiscoveryEngine} />
       <Route path="/heatmap" component={RiskHeatmap} />
       <Route path="/playground" component={Playground} />
       <Route path="/simulator" component={PolicySimulator} />
       <Route path="/causal" component={CausalReasoning} />
+      <Route path="/lineage" component={LineageVisualizer} />
+      <Route path="/audit" component={AuditVault} />
       <Route path="/repo" component={RepoStructure} />
       <Route path="/synergy" component={SynergyEngine} />
       <Route path="/charter" component={EthicsCharter} />
