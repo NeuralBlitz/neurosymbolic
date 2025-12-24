@@ -2,6 +2,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Shield, Lock, FileText, CheckCircle2, AlertTriangle, Scale, BookOpen, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const axioms = [
   { id: "AX-01", title: "Human Non-Maleficence", level: "CRITICAL", desc: "No output shall contribute to physical or psychological harm of human entities." },

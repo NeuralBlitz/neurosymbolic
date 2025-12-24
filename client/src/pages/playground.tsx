@@ -149,9 +149,9 @@ export default function Playground() {
                         animate={{ opacity: [0.5, 1, 0.5] }}
                         transition={{ repeat: Infinity, duration: 1 }}
                       >
-                        > SCANNING PROMPT FOR BIAS...<br/>
-                        > EVALUATING CAUSAL CHAINS...<br/>
-                        > CHECKING AGAINST ETHICAL CHARTER...
+                        &gt; SCANNING PROMPT FOR BIAS...<br/>
+                        &gt; EVALUATING CAUSAL CHAINS...<br/>
+                        &gt; CHECKING AGAINST ETHICAL CHARTER...
                       </motion.div>
                     ) : (
                       <div className="opacity-40 italic">Waiting for input...</div>
