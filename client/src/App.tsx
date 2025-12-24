@@ -5,16 +5,20 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
+import RepoStructure from "@/pages/repo";
+import EpistemicLog from "@/pages/epistemic";
+import DataProvenance from "@/pages/data";
+import GovernanceConfig from "@/pages/settings";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
-      <Route path="/repo" component={Dashboard} />
+      <Route path="/repo" component={RepoStructure} />
       <Route path="/synergy" component={Dashboard} />
-      <Route path="/epistemic" component={Dashboard} />
-      <Route path="/data" component={Dashboard} />
-      <Route path="/settings" component={Dashboard} />
+      <Route path="/epistemic" component={EpistemicLog} />
+      <Route path="/data" component={DataProvenance} />
+      <Route path="/settings" component={GovernanceConfig} />
       <Route component={NotFound} />
     </Switch>
   );
