@@ -1,22 +1,19 @@
 import { Link, useLocation } from "wouter";
-import { Shield, GitBranch, Activity, Database, Settings, BrainCircuit, Eye, Menu, X, PlaySquare } from "lucide-react";
+import { Shield, GitBranch, Activity, Database, Settings, BrainCircuit, Eye, Menu, X, PlaySquare, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 const navItems = [
   { icon: Shield, label: "Charter Monitor", href: "/" },
   { icon: PlaySquare, label: "Model Playground", href: "/playground" },
+  { icon: Network, label: "Causal Logic", href: "/causal" },
   { icon: GitBranch, label: "Repo Structure", href: "/repo" },
   { icon: BrainCircuit, label: "Synergy Engine", href: "/synergy" },
-  { icon: FileTextIcon, label: "Ethical Charter", href: "/charter" },
+  { icon: Shield, label: "Ethical Charter", href: "/charter" },
   { icon: Eye, label: "Epistemic Log", href: "/epistemic" },
   { icon: Database, label: "Data Provenance", href: "/data" },
   { icon: Settings, label: "Governance Config", href: "/settings" },
 ];
-
-function FileTextIcon(props: any) {
-  return <Shield {...props} />;
-}
 
 export function Navigation() {
   const [location] = useLocation();
@@ -44,7 +41,7 @@ export function Navigation() {
           {navItems.map((item) => {
             const isActive = location === item.href;
             return (
-              <Link key={item.href} href={item.href}>
+              <Link key={item.label} href={item.href}>
                 <a
                   className={cn(
                     "flex items-center gap-3 px-4 py-2.5 rounded-md transition-all duration-200 group border border-transparent",
@@ -95,7 +92,7 @@ export function Navigation() {
         {mobileMenuOpen && (
           <nav className="border-t border-white/10 bg-black/90 max-h-[80vh] overflow-y-auto p-4 space-y-2">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <Link key={item.label} href={item.href}>
                 <a onClick={() => setMobileMenuOpen(false)} className={cn("flex items-center gap-3 p-3 rounded", location === item.href ? "bg-primary/10 text-primary" : "text-muted-foreground")}>
                   <item.icon className="w-4 h-4" />
                   <span className="text-sm font-display">{item.label}</span>
@@ -109,8 +106,8 @@ export function Navigation() {
       {/* Bottom Nav Mobile */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-card/80 backdrop-blur-xl border-t border-white/10">
         <nav className="flex justify-around items-center p-2">
-          {navItems.slice(0, 4).map((item) => (
-            <Link key={item.href} href={item.href}>
+          {navItems.slice(0, 5).map((item) => (
+            <Link key={item.label} href={item.href}>
               <a className={cn("flex flex-col items-center gap-1 p-2", location === item.href ? "text-primary" : "text-muted-foreground")}>
                 <item.icon className="w-4 h-4" />
                 <span className="text-[9px] font-mono">{item.label.split(" ")[0]}</span>

@@ -11,12 +11,14 @@ import DataProvenance from "@/pages/data";
 import GovernanceConfig from "@/pages/settings";
 import Playground from "@/pages/playground";
 import EthicsCharter from "@/pages/charter";
+import CausalReasoning from "@/pages/causal";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/playground" component={Playground} />
+      <Route path="/causal" component={CausalReasoning} />
       <Route path="/repo" component={RepoStructure} />
       <Route path="/synergy" component={Dashboard} />
       <Route path="/charter" component={EthicsCharter} />
